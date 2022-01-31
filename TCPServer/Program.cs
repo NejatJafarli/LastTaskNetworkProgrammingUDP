@@ -60,15 +60,43 @@ class Program
                 byte[] bytes2_2;
                 SplitMidPoint(bytes2, out bytes2_1, out bytes2_2);
 
-                var CompressedBytes1=Compress(bytes1_1);
-                var CompressedBytes2=Compress(bytes1_2);
-                var CompressedBytes3=Compress(bytes2_1);
-                var CompressedBytes4=Compress(bytes2_2);
+
+                byte[] bytes1_1_1;
+                byte[] bytes1_1_2;
+
+                SplitMidPoint(bytes1_1, out bytes1_1_1, out bytes1_1_2);
+
+                byte[] bytes1_2_1;
+                byte[] bytes1_2_2;
+                SplitMidPoint(bytes1_2, out bytes1_2_1, out bytes1_2_2);
+
+                byte[] bytes2_1_1;
+                byte[] bytes2_1_2;
+
+                SplitMidPoint(bytes2_1, out bytes2_1_1, out bytes2_1_2);
+
+                byte[] bytes2_2_1;
+                byte[] bytes2_2_2;
+
+                SplitMidPoint(bytes2_2, out bytes2_2_1, out bytes2_2_2);
+
+                var CompressedBytes1=Compress(bytes1_1_1);
+                var CompressedBytes2=Compress(bytes1_1_2);
+                var CompressedBytes3=Compress(bytes1_2_1);
+                var CompressedBytes4=Compress(bytes1_2_2);
+                var CompressedBytes5=Compress(bytes2_1_1);
+                var CompressedBytes6=Compress(bytes2_1_2);
+                var CompressedBytes7=Compress(bytes2_2_1);
+                var CompressedBytes8=Compress(bytes2_2_2);
 
                 MyUdpClient.Send(CompressedBytes1, CompressedBytes1.Length,ep);
                 MyUdpClient.Send(CompressedBytes2, CompressedBytes2.Length,ep);
                 MyUdpClient.Send(CompressedBytes3, CompressedBytes3.Length,ep);
                 MyUdpClient.Send(CompressedBytes4, CompressedBytes4.Length,ep);
+                MyUdpClient.Send(CompressedBytes5, CompressedBytes5.Length,ep);
+                MyUdpClient.Send(CompressedBytes6, CompressedBytes6.Length,ep);
+                MyUdpClient.Send(CompressedBytes7, CompressedBytes7.Length,ep);
+                MyUdpClient.Send(CompressedBytes8, CompressedBytes8.Length,ep);
 
             }
 

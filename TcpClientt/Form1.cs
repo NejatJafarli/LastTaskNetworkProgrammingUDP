@@ -39,6 +39,8 @@ namespace TcpClientt
         private void btn1_Click(object sender, EventArgs e)
         {
 
+            PB1.Image = null;
+
             Task.Factory.StartNew(() =>
             {
                 var ip = IPAddress.Loopback;
@@ -54,17 +56,29 @@ namespace TcpClientt
                     var bytes2 = Client.Receive(ref ep);
                     var bytes3 = Client.Receive(ref ep);
                     var bytes4 = Client.Receive(ref ep);
+                    var bytes5 = Client.Receive(ref ep);
+                    var bytes6 = Client.Receive(ref ep);
+                    var bytes7 = Client.Receive(ref ep);
+                    var bytes8 = Client.Receive(ref ep);
 
                     var DeCompressedBytes1 = Decompress(bytes1);
                     var DeCompressedBytes2 = Decompress(bytes2);
                     var DeCompressedBytes3 = Decompress(bytes3);
                     var DeCompressedBytes4 = Decompress(bytes4);
+                    var DeCompressedBytes5 = Decompress(bytes5);
+                    var DeCompressedBytes6 = Decompress(bytes6);
+                    var DeCompressedBytes7 = Decompress(bytes7);
+                    var DeCompressedBytes8 = Decompress(bytes8);
 
                     List<byte> vs = new List<byte>();
                     vs.AddRange(DeCompressedBytes1);
                     vs.AddRange(DeCompressedBytes2);
                     vs.AddRange(DeCompressedBytes3);
                     vs.AddRange(DeCompressedBytes4);
+                    vs.AddRange(DeCompressedBytes5);
+                    vs.AddRange(DeCompressedBytes6);
+                    vs.AddRange(DeCompressedBytes7);
+                    vs.AddRange(DeCompressedBytes8);
                     Image img;
 
                     using (var ms = new MemoryStream(vs.ToArray()))
